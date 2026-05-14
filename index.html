@@ -394,14 +394,7 @@ const I18N = {
       "Somerville resident"
     ],
     subjects: [
-      "Somerville needs more reading and math interventionists",
-      "Please fund reading and math interventionists in the FY27 budget",
-      "Tier II and Tier III reading and math staffing in SPS",
-      "On reading and math interventionists at SPS — a request from a Somerville resident",
-      "MCAS scores, MTSS, and a request about staffing",
-      "Funding interventionists at the schools DESE flagged",
-      "FY27 school budget — reading and math interventionist staffing",
-      "A request about the FY27 SPS budget"
+      "Interventionist Funding for SPS"
     ],
     openers: [
       "Dear School Committee, Mayor Wilson, and Superintendent Carmona,\n\nI am writing as a Somerville resident, and I am going to be direct. The FY27 budget is being deliberated now, and I want to put one request on the record before that vote: more reading and math interventionists in our schools.",
@@ -471,14 +464,7 @@ const I18N = {
       "Residente de Somerville"
     ],
     subjects: [
-      "Somerville necesita más especialistas de intervención en lectura y matemáticas",
-      "Por favor financien especialistas de intervención en lectura y matemáticas en el presupuesto FY27",
-      "Personal de intervención de Nivel II y III en lectura y matemáticas en SPS",
-      "Sobre los especialistas de intervención en SPS — solicitud de residente de Somerville",
-      "Resultados de MCAS, MTSS y una solicitud sobre personal",
-      "Financiamiento de especialistas de intervención en las escuelas señaladas por DESE",
-      "Presupuesto escolar FY27 — personal de intervención en lectura y matemáticas",
-      "Una solicitud sobre el presupuesto de SPS para FY27"
+      "Interventionist Funding for SPS"
     ],
     openers: [
       "Estimados miembros del Comité Escolar, Alcalde Wilson y Superintendente Carmona:\n\nLes escribo como residente de Somerville, y voy directo al grano. El presupuesto FY27 se está discutiendo ahora, y quiero dejar constancia de una solicitud antes de esa votación: más especialistas de intervención en lectura y matemáticas en nuestras escuelas.",
@@ -548,14 +534,7 @@ const I18N = {
       "Residente de Somerville"
     ],
     subjects: [
-      "Somerville precisa de mais especialistas de intervenção em leitura e matemática",
-      "Por favor financiem especialistas de intervenção em leitura e matemática no orçamento FY27",
-      "Pessoal de intervenção Tier II e III em leitura e matemática em SPS",
-      "Sobre os especialistas de intervenção em SPS — pedido de residente de Somerville",
-      "Resultados do MCAS, MTSS e um pedido sobre o pessoal",
-      "Financiamento de especialistas de intervenção nas escolas sinalizadas pelo DESE",
-      "Orçamento escolar FY27 — pessoal de intervenção em leitura e matemática",
-      "Um pedido sobre o orçamento de SPS para FY27"
+      "Interventionist Funding for SPS"
     ],
     openers: [
       "Prezados membros do Comitê Escolar, Prefeito Wilson e Superintendente Carmona:\n\nEscrevo como residente de Somerville, e vou direto ao assunto. O orçamento FY27 está sendo discutido agora, e quero registrar um pedido antes dessa votação: mais especialistas de intervenção em leitura e matemática nas nossas escolas.",
@@ -679,7 +658,8 @@ function renderEmail() {
   document.getElementById('subjectPreview').textContent = t.subjects[state.sIdx];
   document.getElementById('bodyPreview').textContent = buildBody();
   const link = document.getElementById('sendBtn');
-  link.href = 'mailto:' + RECIPIENT + '?subject=' + encodeURIComponent(t.subjects[state.sIdx]) + '&body=' + encodeURIComponent(buildBody());
+  const mailtoBody = buildBody().replace(/\n/g, '\r\n');
+  link.href = 'mailto:' + RECIPIENT + '?subject=' + encodeURIComponent(t.subjects[state.sIdx]) + '&body=' + encodeURIComponent(mailtoBody);
 }
 
 function applyLanguage(lang) {
