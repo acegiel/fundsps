@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tell Somerville Schools: Fund More Interventionists</title>
+<meta name="description" content="A quick action for Somerville families. Send a personalized email to the School Committee, Mayor, and Superintendent asking for more reading and math interventionists.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ec;
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #2a2a2a;
+    --muted: #6b6b6b;
+    --accent: #8b1e1e;
+    --border: #d8d4c8;
+    --rule: #1a1a1a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 18px 22px 80px;
+  }
+
+  /* Language switcher */
+  .lang-switch {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0;
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+  .lang-switch button {
+    background: none;
+    border: none;
+    padding: 6px 10px;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    border-bottom: 1.5px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .lang-switch button:hover { color: var(--ink); }
+  .lang-switch button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .lang-switch .lang-divider {
+    color: var(--border);
+    padding: 6px 0;
+    user-select: none;
+  }
+
+  /* Masthead */
+  .mast {
+    border-top: 3px solid var(--rule);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0 22px;
+    margin-bottom: 26px;
+  }
+  .kicker {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .kicker::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .lede {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Section labels */
+  .label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 26px 0 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .label .num {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+  .label .note {
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 12px;
+  }
+
+  /* Inputs */
+  .fields {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 8px;
+  }
+  .fields-stack { grid-template-columns: 1fr 1fr; margin-top: 8px; }
+  input, select {
+    font-family: inherit;
+    font-size: 15px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--ink);
+    width: 100%;
+    border-radius: 1px;
+    transition: border-color 0.15s;
+  }
+  input::placeholder { color: #b0aca0; }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--ink);
+  }
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%236b6b6b' d='M0 0l5 6 5-6z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  /* Email card */
+  .email {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    padding: 22px 22px 20px;
+    margin-top: 4px;
+    position: relative;
+  }
+  .email::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    height: 3px;
+    background: var(--ink);
+  }
+  .meta-row {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 5px;
+    display: flex;
+    gap: 8px;
+  }
+  .meta-row .key {
+    color: var(--ink);
+    font-weight: 500;
+    min-width: 64px;
+  }
+  .meta-row .val { flex: 1; word-break: break-word; }
+  .rule { height: 1px; background: var(--border); margin: 14px -22px; }
+  .body {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 16.5px;
+    line-height: 1.62;
+    white-space: pre-wrap;
+    color: var(--ink-soft);
+  }
+
+  /* Buttons */
+  .actions {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .btn {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 15px 18px;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.15s;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    letter-spacing: 0.005em;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+  }
+  .btn-primary:hover, .btn-primary:active {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .btn-secondary {
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn-secondary:hover, .btn-secondary:active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    font-size: 13.5px;
+    padding: 11px 18px;
+  }
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* Footer */
+  footer {
+    margin-top: 36px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  footer .sources-label {
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 10.5px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 22px;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    border-radius: 1px;
+    transition: transform 0.22s ease;
+    pointer-events: none;
+    z-index: 50;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 14px 18px 70px; }
+    h1 { font-size: 28px; }
+    .lede { font-size: 16px; }
+    .fields, .fields-stack { grid-template-columns: 1fr; }
+    .email { padding: 18px 18px 16px; }
+    .rule { margin: 12px -18px; }
+    .body { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="lang-switch" id="langSwitch">
+    <button type="button" data-lang="en">English</button>
+    <span class="lang-divider">·</span>
+    <button type="button" data-lang="es">Español</button>
+    <span class="lang-divider">·</span>
+    <button type="button" data-lang="pt">Português</button>
+  </nav>
+
+  <header class="mast">
+    <p class="kicker" id="kicker"></p>
+    <h1 id="h1"></h1>
+    <p class="lede" id="lede"></p>
+  </header>
+
+  <p class="label"><span class="num">i.</span> <span id="label1"></span> <span class="note" id="label1Note"></span></p>
+  <div class="fields">
+    <input id="senderName" type="text" autocomplete="name">
+    <input id="senderZip" type="text" maxlength="5" inputmode="numeric" autocomplete="postal-code">
+  </div>
+
+  <p class="label"><span class="num">ii.</span> <span id="label2"></span> <span class="note" id="label2Note"></span></p>
+  <div class="fields fields-stack">
+    <select id="senderRole"></select>
+    <select id="senderSchool"></select>
+  </div>
+
+  <p class="label"><span class="num">iii.</span> <span id="label3"></span></p>
+  <div class="email">
+    <div class="meta-row"><span class="key" id="metaToKey"></span><span class="val">s_c@somerville.k12.ma.us</span></div>
+    <div class="meta-row"><span class="key" id="metaSubjectKey"></span><span class="val" id="subjectPreview"></span></div>
+    <div class="rule"></div>
+    <div class="body" id="bodyPreview"></div>
+  </div>
+
+  <div class="actions">
+    <a class="btn btn-primary" id="sendBtn" href="#"></a>
+    <button class="btn btn-secondary" id="copyBtn" type="button"></button>
+    <button class="btn btn-ghost" id="regenBtn" type="button"></button>
+  </div>
+
+  <footer>
+    <span class="sources-label" id="sourcesLabel"></span>
+    <span id="sourcesText"></span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const I18N = {
+
+  en: {
+    kicker: "An open message · Somerville families",
+    h1: "Somerville Public Schools needs more reading and math interventionists.",
+    lede: "Add your name. Send the email. Every version is different, so the inbox can't pretend it's a form letter.",
+    label1: "Sign your name",
+    label1Note: "(optional, but more effective)",
+    label2: "Your connection to SPS",
+    label2Note: "(optional)",
+    label3: "Your email — preview",
+    namePh: "Full name",
+    zipPh: "Zip (02143, etc.)",
+    rolePh: "— I am a... —",
+    schoolPh: "— School (if applicable) —",
+    btnSend: "Open in my email app",
+    btnCopy: "Copy email text",
+    btnRegen: "Show me a different version",
+    toastCopied: "Email copied to clipboard",
+    toastCopyFail: "Copy not supported — long-press to select",
+    sourcesLabel: "Sources",
+    sourcesText: "All facts cited come from the Massachusetts Department of Elementary and Secondary Education (DESE) and the Somerville Public Schools 2024 MCAS & Accountability Results presentation to the School Committee (October 7, 2024). The recipient address routes to the Somerville School Committee, Mayor, and Superintendent.",
+    metaTo: "To",
+    metaSubject: "Subject",
+    sigFallback: "A Somerville resident",
+    sigState: "Somerville, MA",
+    roles: [
+      "Parent of a current SPS student",
+      "Parent of an incoming SPS student",
+      "Grandparent of an SPS student",
+      "Family member of an SPS student",
+      "SPS educator or staff member",
+      "SPS alum",
+      "Somerville resident"
+    ],
+    subjects: [
+      "Somerville needs more reading and math interventionists",
+      "Please fund reading and math interventionists in the FY27 budget",
+      "Tier II and Tier III reading and math staffing in SPS",
+      "On reading and math interventionists at SPS — a request from a Somerville resident",
+      "MCAS scores, MTSS, and a request about staffing",
+      "Funding interventionists at the schools DESE flagged",
+      "FY27 school budget — reading and math interventionist staffing",
+      "A request about the FY27 SPS budget"
+    ],
+    openers: [
+      "Dear School Committee, Mayor Wilson, and Superintendent Carmona,\n\nI am writing as a Somerville resident, and I am going to be direct. The FY27 budget is being deliberated now, and I want to put one request on the record before that vote: more reading and math interventionists in our schools.",
+      "Dear School Committee, Mayor Wilson, and Superintendent Carmona,\n\nI would like to flag something that I do not think has been getting the honest attention it deserves. Somerville Public Schools needs significantly more reading and math interventionists, and the FY27 budget is the moment to address that.",
+      "Dear School Committee, Mayor Wilson, and Superintendent Carmona,\n\nThis is a polite letter, but it is also a firm one. I have read the district's own MCAS data, and the case for funding more reading and math interventionists is not subtle.",
+      "Dear School Committee, Mayor Wilson, and Superintendent Carmona,\n\nI am writing about a problem that has been visible in the district's own MCAS data for years now. I would like to see reading and math intervention staffing treated as the priority it actually is in the FY27 budget.",
+      "Dear School Committee, Mayor Wilson, and Superintendent Carmona,\n\nSomerville families are paying close attention to the FY27 budget vote. I am writing to ask that one item — reading and math interventionist staffing — be treated as non-negotiable.",
+      "Dear School Committee, Mayor Wilson, and Superintendent Carmona,\n\nI am writing because the gap between what Somerville Public Schools says about supporting all students and what its reading and math interventionist staffing actually allows for has grown too obvious to ignore."
+    ],
+    facts: [
+      "On the 2024 MCAS, only 30 percent of Somerville 4th graders met or exceeded expectations in math. That means roughly seven of every ten 4th graders did not meet grade-level expectations. This is the district's own reported data.",
+      "On the 2024 MCAS, only 34 percent of Somerville 4th graders met or exceeded expectations in ELA. Two thirds of our 4th graders are not reading at grade level by the state's own measure. Reading interventionists exist precisely for this number.",
+      "On the 2024 MCAS, 7th grade ELA dropped seven percentage points in a single year, from 39 percent meeting or exceeding in 2023 to 32 percent in 2024. A seven-point single-year drop is not a rounding error. It is a warning sign.",
+      "On the 2024 MCAS, fewer than half of Somerville students met or exceeded expectations in ELA at every tested grade level from 3 through 8. Not one grade cleared 50 percent. Reading is the foundation of everything else, and we are not delivering it.",
+      "Only 34 percent of Somerville 3rd graders met or exceeded expectations in math on the 2024 MCAS, and only 41 percent met or exceeded in ELA. Third grade is the year students move from learning to read to reading to learn. Falling behind here in math or reading is not easy to recover from later.",
+      "In Somerville's 2025-26 kindergarten class, 141 of 382 students — about 37 percent — are English Learners, and roughly half are designated High Needs by the state. These are exactly the students that trained reading and math interventionists are equipped to serve.",
+      "The district's own 2024 School Committee presentation acknowledged persistent opportunity gaps in MCAS math and reading scores for multilingual learners, students with disabilities, low-income students, and Black and Hispanic or Latino students, and stated that most subgroups have not yet returned to pre-COVID achievement levels. That is the district's own language, not mine.",
+      "Somerville Public Schools enrolls 4,876 students. Thirty-eight percent are Hispanic or Latino, well above the state average of 26 percent. This is a district that serves a high-needs population by every honest measure, and it needs to be staffed accordingly in math and reading support.",
+      "On the 2024 MCAS, math scores in 4th, 5th, 6th, and 7th grade all declined from the previous year. Math is not a discipline that recovers on its own. It recovers with small-group, targeted instruction from trained math interventionists.",
+      "The district's own response to flat and declining MCAS math and reading scores names alignment of the Multi-tiered System of Support framework as a core strategy. An MTSS framework without enough reading and math interventionists to actually deliver Tier II and Tier III instruction is a chart on a slide. It is not a service to children.",
+      "Three of Somerville's eight K-8 schools are currently flagged by the state as requiring assistance or intervention. The other five are not far ahead. This is a district-wide reading and math staffing question, not a single-school question.",
+      "On the 2024 MCAS, only 32 percent of Somerville 7th graders met or exceeded expectations in ELA, and only 32 percent in math. By the end of middle school, two thirds of our students are below grade level in the two subjects that determine everything that comes next. This is what an under-resourced intervention program looks like."
+    ],
+    asks: [
+      "Please make reading and math interventionist hiring a top staffing priority of the FY27 budget. Early intervention works. Those students cannot wait another year for the district to figure this out."
+    ],
+    closers: [
+      "I am paying attention to the FY27 budget vote, and so are a lot of other Somerville families. I look forward to seeing this addressed.",
+      "This city has the resources, the data, and the obligation to do better. I expect to see it reflected in the FY27 budget.",
+      "I do not need a long reply. I need to see action in the budget. Thank you for your service to the city.",
+      "Somerville's children are not the ones who get to wait until next year. Please make the right call. Thank you for the work you do.",
+      "Please treat this letter as a vote — for interventionists, and for the students DESE has already told us are not being adequately served."
+    ]
+  },
+
+  es: {
+    kicker: "Un mensaje abierto · Familias de Somerville",
+    h1: "Las escuelas públicas de Somerville necesitan más especialistas de intervención en lectura y matemáticas.",
+    lede: "Agregue su nombre. Envíe el correo. Cada versión es diferente, así que la bandeja de entrada no puede fingir que es una carta genérica.",
+    label1: "Firme con su nombre",
+    label1Note: "(opcional, pero más efectivo)",
+    label2: "Su conexión con SPS",
+    label2Note: "(opcional)",
+    label3: "Su correo — vista previa",
+    namePh: "Nombre completo",
+    zipPh: "Código postal (02143, etc.)",
+    rolePh: "— Soy... —",
+    schoolPh: "— Escuela (si corresponde) —",
+    btnSend: "Abrir en mi aplicación de correo",
+    btnCopy: "Copiar el texto del correo",
+    btnRegen: "Mostrar otra versión",
+    toastCopied: "Correo copiado al portapapeles",
+    toastCopyFail: "Copia no disponible — mantenga presionado para seleccionar",
+    sourcesLabel: "Fuentes",
+    sourcesText: "Todos los datos citados provienen del Departamento de Educación Primaria y Secundaria de Massachusetts (DESE) y de la presentación de Resultados de MCAS y Rendición de Cuentas 2024 al Comité Escolar de las Escuelas Públicas de Somerville (7 de octubre de 2024). La dirección de correo se envía al Comité Escolar, al Alcalde y al Superintendente de Somerville.",
+    metaTo: "Para",
+    metaSubject: "Asunto",
+    sigFallback: "Residente de Somerville",
+    sigState: "Somerville, MA",
+    roles: [
+      "Madre/padre de un estudiante actual de SPS",
+      "Madre/padre de un futuro estudiante de SPS",
+      "Abuelo/a de un estudiante de SPS",
+      "Familiar de un estudiante de SPS",
+      "Educador/a o personal de SPS",
+      "Exalumno/a de SPS",
+      "Residente de Somerville"
+    ],
+    subjects: [
+      "Somerville necesita más especialistas de intervención en lectura y matemáticas",
+      "Por favor financien especialistas de intervención en lectura y matemáticas en el presupuesto FY27",
+      "Personal de intervención de Nivel II y III en lectura y matemáticas en SPS",
+      "Sobre los especialistas de intervención en SPS — solicitud de residente de Somerville",
+      "Resultados de MCAS, MTSS y una solicitud sobre personal",
+      "Financiamiento de especialistas de intervención en las escuelas señaladas por DESE",
+      "Presupuesto escolar FY27 — personal de intervención en lectura y matemáticas",
+      "Una solicitud sobre el presupuesto de SPS para FY27"
+    ],
+    openers: [
+      "Estimados miembros del Comité Escolar, Alcalde Wilson y Superintendente Carmona:\n\nLes escribo como residente de Somerville, y voy directo al grano. El presupuesto FY27 se está discutiendo ahora, y quiero dejar constancia de una solicitud antes de esa votación: más especialistas de intervención en lectura y matemáticas en nuestras escuelas.",
+      "Estimados miembros del Comité Escolar, Alcalde Wilson y Superintendente Carmona:\n\nQuisiera señalar algo que no creo que esté recibiendo la atención honesta que merece. Las escuelas públicas de Somerville necesitan considerablemente más especialistas de intervención en lectura y matemáticas, y el presupuesto FY27 es el momento de abordarlo.",
+      "Estimados miembros del Comité Escolar, Alcalde Wilson y Superintendente Carmona:\n\nEsta es una carta cortés, pero también firme. He leído los propios datos del distrito sobre MCAS, y los argumentos para financiar más especialistas de intervención en lectura y matemáticas no son sutiles.",
+      "Estimados miembros del Comité Escolar, Alcalde Wilson y Superintendente Carmona:\n\nLes escribo sobre un problema que ha sido visible en los propios datos del distrito durante años. Me gustaría que se trate al personal de intervención en lectura y matemáticas como la prioridad que realmente es en el presupuesto FY27.",
+      "Estimados miembros del Comité Escolar, Alcalde Wilson y Superintendente Carmona:\n\nLas familias de Somerville están prestando mucha atención a la votación del presupuesto FY27. Les escribo para pedir que un punto — el personal de intervención en lectura y matemáticas — se trate como innegociable.",
+      "Estimados miembros del Comité Escolar, Alcalde Wilson y Superintendente Carmona:\n\nLes escribo porque la brecha entre lo que las escuelas públicas de Somerville dicen sobre apoyar a todos los estudiantes y lo que su personal de intervención en lectura y matemáticas realmente permite se ha vuelto demasiado evidente para ignorarla."
+    ],
+    facts: [
+      "En el MCAS de 2024, solo el 30 por ciento de los estudiantes de 4.º grado de Somerville cumplieron o superaron las expectativas en matemáticas. Eso significa que aproximadamente siete de cada diez estudiantes de 4.º grado no alcanzaron el nivel esperado para su grado. Estos son los datos reportados por el propio distrito.",
+      "En el MCAS de 2024, solo el 34 por ciento de los estudiantes de 4.º grado de Somerville cumplieron o superaron las expectativas en ELA (Lectura y Lenguaje). Dos tercios de nuestros estudiantes de 4.º grado no están leyendo al nivel de su grado según la propia medida del estado. Los especialistas de intervención en lectura existen precisamente para esa cifra.",
+      "En el MCAS de 2024, el ELA de 7.º grado cayó siete puntos porcentuales en un solo año, del 39 por ciento que cumplía o superaba expectativas en 2023 al 32 por ciento en 2024. Una caída de siete puntos en un año no es un error de redondeo. Es una señal de alarma.",
+      "En el MCAS de 2024, menos de la mitad de los estudiantes de Somerville cumplió o superó las expectativas en ELA en cada nivel de grado del 3.º al 8.º. Ningún grado superó el 50 por ciento. La lectura es la base de todo lo demás, y no la estamos enseñando bien.",
+      "Solo el 34 por ciento de los estudiantes de 3.º grado de Somerville cumplió o superó las expectativas en matemáticas en el MCAS de 2024, y solo el 41 por ciento en ELA. El tercer grado es el año en que los estudiantes pasan de aprender a leer a leer para aprender. Quedarse atrás aquí en matemáticas o lectura no es fácil de recuperar más adelante.",
+      "En la clase de kindergarten 2025-26 de Somerville, 141 de 382 estudiantes — aproximadamente el 37 por ciento — son Aprendices de Inglés, y aproximadamente la mitad son designados como Alta Necesidad por el estado. Estos son exactamente los estudiantes a quienes los especialistas de intervención capacitados en lectura y matemáticas están equipados para servir.",
+      "La propia presentación del Comité Escolar de 2024 reconoció brechas persistentes de oportunidad en los resultados de matemáticas y lectura del MCAS para los aprendices multilingües, los estudiantes con discapacidades, los estudiantes de bajos ingresos y los estudiantes Negros e Hispanos o Latinos, y declaró que la mayoría de los subgrupos aún no ha regresado a los niveles de logro previos a la pandemia. Ese es el propio lenguaje del distrito, no el mío.",
+      "Las escuelas públicas de Somerville matriculan a 4.876 estudiantes. El 38 por ciento son Hispanos o Latinos, muy por encima del promedio estatal del 26 por ciento. Este es un distrito que sirve a una población de alta necesidad por toda medida honesta, y necesita ser dotado de personal en consecuencia para el apoyo en matemáticas y lectura.",
+      "En el MCAS de 2024, los puntajes de matemáticas en 4.º, 5.º, 6.º y 7.º grado disminuyeron en comparación con el año anterior. Las matemáticas no son una disciplina que se recupera sola. Se recupera con instrucción dirigida en grupos pequeños por parte de especialistas de intervención capacitados en matemáticas.",
+      "La propia respuesta del distrito a los puntajes estancados o en descenso del MCAS en matemáticas y lectura nombra la alineación del marco de Sistema de Apoyo de Múltiples Niveles (MTSS) como una estrategia central. Un marco de MTSS sin suficientes especialistas de intervención en lectura y matemáticas para entregar realmente la instrucción de Nivel II y III es un gráfico en una diapositiva. No es un servicio para los niños.",
+      "Tres de las ocho escuelas K-8 de Somerville están actualmente señaladas por el estado como necesitadas de asistencia o intervención. Las otras cinco no están muy por delante. Esta es una cuestión de personal de lectura y matemáticas a nivel de distrito, no de una sola escuela.",
+      "En el MCAS de 2024, solo el 32 por ciento de los estudiantes de 7.º grado de Somerville cumplió o superó las expectativas en ELA, y solo el 32 por ciento en matemáticas. Al final de la escuela intermedia, dos tercios de nuestros estudiantes están por debajo del nivel de grado en las dos materias que determinan todo lo que viene después. Así es como se ve un programa de intervención con insuficientes recursos."
+    ],
+    asks: [
+      "Por favor, hagan que la contratación de especialistas de intervención en lectura y matemáticas sea una de las principales prioridades de personal del presupuesto FY27. La intervención temprana funciona. Esos estudiantes no pueden esperar otro año a que el distrito lo resuelva."
+    ],
+    closers: [
+      "Estoy prestando atención a la votación del presupuesto FY27, y muchas otras familias de Somerville también. Espero ver esto atendido.",
+      "Esta ciudad tiene los recursos, los datos y la obligación de hacerlo mejor. Espero verlo reflejado en el presupuesto FY27.",
+      "No necesito una respuesta larga. Necesito ver acción en el presupuesto. Gracias por su servicio a la ciudad.",
+      "Los niños de Somerville no son quienes pueden esperar hasta el próximo año. Por favor, tomen la decisión correcta. Gracias por el trabajo que hacen.",
+      "Por favor, traten esta carta como un voto — por los especialistas de intervención, y por los estudiantes que DESE ya nos ha dicho que no están siendo adecuadamente atendidos."
+    ]
+  },
+
+  pt: {
+    kicker: "Uma mensagem aberta · Famílias de Somerville",
+    h1: "As escolas públicas de Somerville precisam de mais especialistas de intervenção em leitura e matemática.",
+    lede: "Adicione seu nome. Envie o e-mail. Cada versão é diferente, então a caixa de entrada não pode fingir que é uma carta padrão.",
+    label1: "Assine com seu nome",
+    label1Note: "(opcional, mas mais eficaz)",
+    label2: "Sua conexão com SPS",
+    label2Note: "(opcional)",
+    label3: "Seu e-mail — pré-visualização",
+    namePh: "Nome completo",
+    zipPh: "CEP (02143, etc.)",
+    rolePh: "— Sou... —",
+    schoolPh: "— Escola (se aplicável) —",
+    btnSend: "Abrir no meu aplicativo de e-mail",
+    btnCopy: "Copiar o texto do e-mail",
+    btnRegen: "Mostrar outra versão",
+    toastCopied: "E-mail copiado para a área de transferência",
+    toastCopyFail: "Cópia não disponível — pressione e segure para selecionar",
+    sourcesLabel: "Fontes",
+    sourcesText: "Todos os dados citados vêm do Departamento de Educação Elementar e Secundária de Massachusetts (DESE) e da apresentação dos Resultados do MCAS e Prestação de Contas 2024 ao Comitê Escolar das Escolas Públicas de Somerville (7 de outubro de 2024). O endereço de e-mail é enviado ao Comitê Escolar, ao Prefeito e ao Superintendente de Somerville.",
+    metaTo: "Para",
+    metaSubject: "Assunto",
+    sigFallback: "Residente de Somerville",
+    sigState: "Somerville, MA",
+    roles: [
+      "Pai/mãe de aluno atual de SPS",
+      "Pai/mãe de futuro aluno de SPS",
+      "Avô/avó de aluno de SPS",
+      "Familiar de aluno de SPS",
+      "Educador/a ou funcionário/a de SPS",
+      "Ex-aluno/a de SPS",
+      "Residente de Somerville"
+    ],
+    subjects: [
+      "Somerville precisa de mais especialistas de intervenção em leitura e matemática",
+      "Por favor financiem especialistas de intervenção em leitura e matemática no orçamento FY27",
+      "Pessoal de intervenção Tier II e III em leitura e matemática em SPS",
+      "Sobre os especialistas de intervenção em SPS — pedido de residente de Somerville",
+      "Resultados do MCAS, MTSS e um pedido sobre o pessoal",
+      "Financiamento de especialistas de intervenção nas escolas sinalizadas pelo DESE",
+      "Orçamento escolar FY27 — pessoal de intervenção em leitura e matemática",
+      "Um pedido sobre o orçamento de SPS para FY27"
+    ],
+    openers: [
+      "Prezados membros do Comitê Escolar, Prefeito Wilson e Superintendente Carmona:\n\nEscrevo como residente de Somerville, e vou direto ao assunto. O orçamento FY27 está sendo discutido agora, e quero registrar um pedido antes dessa votação: mais especialistas de intervenção em leitura e matemática nas nossas escolas.",
+      "Prezados membros do Comitê Escolar, Prefeito Wilson e Superintendente Carmona:\n\nGostaria de destacar algo que não acredito estar recebendo a atenção honesta que merece. As escolas públicas de Somerville precisam de consideravelmente mais especialistas de intervenção em leitura e matemática, e o orçamento FY27 é o momento de tratar disso.",
+      "Prezados membros do Comitê Escolar, Prefeito Wilson e Superintendente Carmona:\n\nEsta é uma carta educada, mas também firme. Li os próprios dados do distrito sobre o MCAS, e os argumentos para financiar mais especialistas de intervenção em leitura e matemática não são sutis.",
+      "Prezados membros do Comitê Escolar, Prefeito Wilson e Superintendente Carmona:\n\nEscrevo sobre um problema que tem sido visível nos próprios dados do distrito há anos. Gostaria que o pessoal de intervenção em leitura e matemática fosse tratado como a prioridade que de fato é no orçamento FY27.",
+      "Prezados membros do Comitê Escolar, Prefeito Wilson e Superintendente Carmona:\n\nAs famílias de Somerville estão prestando muita atenção à votação do orçamento FY27. Escrevo para pedir que um item — o pessoal de intervenção em leitura e matemática — seja tratado como inegociável.",
+      "Prezados membros do Comitê Escolar, Prefeito Wilson e Superintendente Carmona:\n\nEscrevo porque a diferença entre o que as escolas públicas de Somerville dizem sobre apoiar todos os alunos e o que o pessoal de intervenção em leitura e matemática realmente permite tornou-se óbvia demais para ignorar."
+    ],
+    facts: [
+      "No MCAS de 2024, apenas 30 por cento dos alunos do 4.º ano de Somerville atenderam ou superaram as expectativas em matemática. Isso significa que aproximadamente sete em cada dez alunos do 4.º ano não atingiram o nível esperado para o ano escolar. Estes são os dados relatados pelo próprio distrito.",
+      "No MCAS de 2024, apenas 34 por cento dos alunos do 4.º ano de Somerville atenderam ou superaram as expectativas em ELA (Língua Inglesa). Dois terços dos nossos alunos do 4.º ano não estão lendo no nível do ano escolar segundo a medida do próprio estado. Os especialistas de intervenção em leitura existem precisamente para esse número.",
+      "No MCAS de 2024, o ELA do 7.º ano caiu sete pontos percentuais em um único ano, de 39 por cento atendendo ou superando expectativas em 2023 para 32 por cento em 2024. Uma queda de sete pontos em um ano não é um erro de arredondamento. É um sinal de alerta.",
+      "No MCAS de 2024, menos da metade dos alunos de Somerville atendeu ou superou as expectativas em ELA em todos os anos testados do 3.º ao 8.º. Nenhum ano ultrapassou 50 por cento. A leitura é a base de tudo o mais, e não estamos ensinando bem.",
+      "Apenas 34 por cento dos alunos do 3.º ano de Somerville atenderam ou superaram as expectativas em matemática no MCAS de 2024, e apenas 41 por cento em ELA. O terceiro ano é o ano em que os alunos passam de aprender a ler para ler para aprender. Ficar para trás aqui em matemática ou leitura não é fácil de recuperar mais tarde.",
+      "Na turma de kindergarten 2025-26 de Somerville, 141 de 382 alunos — cerca de 37 por cento — são Aprendizes de Inglês, e aproximadamente metade são designados como Alta Necessidade pelo estado. Estes são exatamente os alunos que os especialistas de intervenção em leitura e matemática treinados estão equipados para atender.",
+      "A própria apresentação do Comitê Escolar de 2024 reconheceu lacunas persistentes de oportunidade nos resultados de matemática e leitura do MCAS para aprendizes multilíngues, alunos com deficiência, alunos de baixa renda e alunos Negros e Hispânicos ou Latinos, e declarou que a maioria dos subgrupos ainda não retornou aos níveis de desempenho pré-pandemia. Essa é a linguagem do próprio distrito, não a minha.",
+      "As escolas públicas de Somerville matriculam 4.876 alunos. Trinta e oito por cento são Hispânicos ou Latinos, muito acima da média estadual de 26 por cento. Este é um distrito que atende a uma população de alta necessidade por qualquer medida honesta, e precisa ser provido de pessoal adequadamente para o apoio em matemática e leitura.",
+      "No MCAS de 2024, as pontuações de matemática no 4.º, 5.º, 6.º e 7.º ano todas diminuíram em relação ao ano anterior. Matemática não é uma disciplina que se recupera sozinha. Ela se recupera com instrução direcionada em pequenos grupos por especialistas de intervenção treinados em matemática.",
+      "A própria resposta do distrito às pontuações estáveis ou em queda do MCAS em matemática e leitura cita o alinhamento da estrutura de Sistema de Apoio Multinível (MTSS) como uma estratégia central. Uma estrutura de MTSS sem especialistas de intervenção em leitura e matemática suficientes para entregar realmente a instrução Tier II e Tier III é um gráfico em um slide. Não é um serviço para as crianças.",
+      "Três das oito escolas K-8 de Somerville estão atualmente sinalizadas pelo estado como precisando de assistência ou intervenção. As outras cinco não estão muito à frente. Esta é uma questão de pessoal de leitura e matemática em todo o distrito, não de uma única escola.",
+      "No MCAS de 2024, apenas 32 por cento dos alunos do 7.º ano de Somerville atenderam ou superaram as expectativas em ELA, e apenas 32 por cento em matemática. Ao final do ensino fundamental II, dois terços dos nossos alunos estão abaixo do nível do ano em duas matérias que determinam tudo o que vem depois. É assim que se parece um programa de intervenção com recursos insuficientes."
+    ],
+    asks: [
+      "Por favor, façam da contratação de especialistas de intervenção em leitura e matemática uma das principais prioridades de pessoal do orçamento FY27. A intervenção precoce funciona. Aqueles alunos não podem esperar mais um ano para que o distrito resolva isso."
+    ],
+    closers: [
+      "Estou prestando atenção à votação do orçamento FY27, e muitas outras famílias de Somerville também. Espero ver isso ser tratado.",
+      "Esta cidade tem os recursos, os dados e a obrigação de fazer melhor. Espero ver isso refletido no orçamento FY27.",
+      "Não preciso de uma resposta longa. Preciso ver ação no orçamento. Agradeço o serviço que prestam à cidade.",
+      "As crianças de Somerville não são as que podem esperar até o próximo ano. Por favor, tomem a decisão certa. Agradeço o trabalho que fazem.",
+      "Por favor, tratem esta carta como um voto — pelos especialistas de intervenção, e pelos alunos que o DESE já nos disse que não estão sendo adequadamente atendidos."
+    ]
+  }
+};
+
+const SCHOOLS = [
+  "Argenziano School",
+  "Arthur D. Healey School",
+  "Benjamin G. Brown School",
+  "Capuano Early Childhood Center",
+  "East Somerville Community School",
+  "John F. Kennedy School",
+  "Next Wave Junior High",
+  "West Somerville Neighborhood School",
+  "Winter Hill Community School",
+  "Somerville High School",
+  "Full Circle High School"
+];
+
+const RECIPIENT = "s_c@somerville.k12.ma.us";
+const RESIDENT_ROLE_INDEX = 6;
+
+let currentLang = 'en';
+let state = null;
+
+function L() { return I18N[currentLang]; }
+
+function detectLang() {
+  const nav = (navigator.language || 'en').toLowerCase();
+  if (nav.startsWith('es')) return 'es';
+  if (nav.startsWith('pt')) return 'pt';
+  return 'en';
+}
+
+function pickN(n, max) {
+  const pool = [];
+  for (let i = 0; i < max; i++) pool.push(i);
+  const out = [];
+  for (let i = 0; i < n && pool.length > 0; i++) {
+    out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+  }
+  return out;
+}
+
+function roll() {
+  const t = L();
+  state = {
+    sIdx: Math.floor(Math.random() * t.subjects.length),
+    oIdx: Math.floor(Math.random() * t.openers.length),
+    fIdxs: pickN(2, t.facts.length),
+    aIdx: Math.floor(Math.random() * t.asks.length),
+    cIdx: Math.floor(Math.random() * t.closers.length)
+  };
+}
+
+function signatureBlock() {
+  const name = document.getElementById('senderName').value.trim();
+  const zip = document.getElementById('senderZip').value.trim();
+  const roleVal = document.getElementById('senderRole').value;
+  const school = document.getElementById('senderSchool').value;
+  const t = L();
+
+  const roleIdx = roleVal !== '' ? parseInt(roleVal, 10) : -1;
+  const role = roleIdx >= 0 ? t.roles[roleIdx] : '';
+  const isResident = roleIdx === RESIDENT_ROLE_INDEX;
+
+  const lines = [];
+  if (name) {
+    lines.push(name);
+    if (role && school && !isResident) lines.push(role + ' — ' + school);
+    else if (role) lines.push(role);
+  } else {
+    if (role && school && !isResident) lines.push(role + ' — ' + school);
+    else if (role) lines.push(role);
+    else lines.push(t.sigFallback);
+  }
+  lines.push(zip ? t.sigState + ' ' + zip : t.sigState);
+  return '\n\n' + lines.join('\n');
+}
+
+function buildBody() {
+  const t = L();
+  const facts = state.fIdxs.map(function(i) { return t.facts[i]; }).join('\n\n');
+  return t.openers[state.oIdx] + '\n\n' + facts + '\n\n' + t.asks[state.aIdx] + '\n\n' + t.closers[state.cIdx] + signatureBlock();
+}
+
+function renderEmail() {
+  if (!state) return;
+  const t = L();
+  document.getElementById('subjectPreview').textContent = t.subjects[state.sIdx];
+  document.getElementById('bodyPreview').textContent = buildBody();
+  const link = document.getElementById('sendBtn');
+  link.href = 'mailto:' + RECIPIENT + '?subject=' + encodeURIComponent(t.subjects[state.sIdx]) + '&body=' + encodeURIComponent(buildBody());
+}
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  const t = L();
+
+  document.getElementById('kicker').textContent = t.kicker;
+  document.getElementById('h1').textContent = t.h1;
+  document.getElementById('lede').textContent = t.lede;
+  document.getElementById('label1').textContent = t.label1;
+  document.getElementById('label1Note').textContent = t.label1Note;
+  document.getElementById('label2').textContent = t.label2;
+  document.getElementById('label2Note').textContent = t.label2Note;
+  document.getElementById('label3').textContent = t.label3;
+  document.getElementById('senderName').placeholder = t.namePh;
+  document.getElementById('senderZip').placeholder = t.zipPh;
+  document.getElementById('metaToKey').textContent = t.metaTo;
+  document.getElementById('metaSubjectKey').textContent = t.metaSubject;
+  document.getElementById('sendBtn').textContent = t.btnSend;
+  document.getElementById('copyBtn').textContent = t.btnCopy;
+  document.getElementById('regenBtn').textContent = t.btnRegen;
+  document.getElementById('sourcesLabel').textContent = t.sourcesLabel;
+  document.getElementById('sourcesText').textContent = t.sourcesText;
+
+  const roleSelect = document.getElementById('senderRole');
+  const prevRole = roleSelect.value;
+  roleSelect.innerHTML = '';
+  const ph = document.createElement('option');
+  ph.value = '';
+  ph.textContent = t.rolePh;
+  roleSelect.appendChild(ph);
+  t.roles.forEach(function(r, i) {
+    const opt = document.createElement('option');
+    opt.value = String(i);
+    opt.textContent = r;
+    roleSelect.appendChild(opt);
+  });
+  roleSelect.value = prevRole;
+
+  const schoolSelect = document.getElementById('senderSchool');
+  const prevSchool = schoolSelect.value;
+  if (schoolSelect.options.length === 0) {
+    const sp = document.createElement('option');
+    sp.value = '';
+    sp.textContent = t.schoolPh;
+    schoolSelect.appendChild(sp);
+    SCHOOLS.forEach(function(s) {
+      const opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = s;
+      schoolSelect.appendChild(opt);
+    });
+  } else {
+    schoolSelect.options[0].textContent = t.schoolPh;
+  }
+  schoolSelect.value = prevSchool;
+
+  document.querySelectorAll('#langSwitch button').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+
+  document.title = t.h1.replace(/\.$/, '');
+  renderEmail();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(function() { t.classList.remove('show'); }, 2200);
+}
+
+document.getElementById('regenBtn').addEventListener('click', function() {
+  roll();
+  renderEmail();
+});
+
+['senderName', 'senderZip', 'senderRole', 'senderSchool'].forEach(function(id) {
+  const el = document.getElementById(id);
+  el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', renderEmail);
+});
+
+document.getElementById('copyBtn').addEventListener('click', async function() {
+  const t = L();
+  const text = t.metaTo + ': ' + RECIPIENT + '\n' + t.metaSubject + ': ' + t.subjects[state.sIdx] + '\n\n' + buildBody();
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast(t.toastCopied);
+  } catch (err) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast(t.toastCopied);
+    } catch (e) {
+      showToast(t.toastCopyFail);
+    }
+    document.body.removeChild(ta);
+  }
+});
+
+document.querySelectorAll('#langSwitch button').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    applyLanguage(btn.dataset.lang);
+  });
+});
+
+roll();
+applyLanguage(detectLang());
+</script>
+</body>
+</html>
